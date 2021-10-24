@@ -1,0 +1,25 @@
+<transactions>
+	<transaction>
+	<ticker>MSFT </ticker>
+	<tradedate> 01/29/2018 05:50 </tradedate>
+	<action> BUY</action>
+	<quantity>100</quantity>
+	<price> 85.95</price>
+	</transaction>
+	
+	<transaction>
+	<ticker>GOOG </ticker>
+	<tradedate> 01/29/2018 05:50 </tradedate>
+	<action> BUY</action>
+	<quantity>50</quantity>
+	<price> 1065.00</price>
+	</transaction>
+	
+	<transaction>
+	<ticker>MSFT </ticker>
+	<tradedate> 01/30/2018 05:50 </tradedate>
+	<action> BUY</action>
+	<quantity>150</quantity>
+	<price> 87.82</price>
+	</transaction>
+</transactions>

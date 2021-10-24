@@ -1,0 +1,17 @@
+<tickers>
+	
+	<ticker name="MSFT">
+	<price>92.64</price>
+	<prev_close>90.77</prev_close>
+	<datetime>10/23/2021 00:00</datetime>
+	</ticker>
+	
+	<ticker name="GOOG">
+	<price>1024.61</price>
+	<prev_close>1015.45</prev_close>
+	<datetime>10/23/2021 00:00</datetime>
+	</ticker>
+	
+
+	
+</tickers>
