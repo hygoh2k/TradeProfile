@@ -1,7 +1,7 @@
 # TradeProfile
 Trade Profile Application
 
-Objective: Read in the trading profile in workding directory, and presenting the P/L based on the latest tickers' performance
+Objective: Read in the trading profile in working directory, calculate and present the P/L report based on the latest tickers' performance
 
 The project comprises of 3 components:
 ##  Main Component 
