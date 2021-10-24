@@ -29,5 +29,12 @@ namespace ReportTabPage
             
 
         }
+
+        public override Task LoadAsync()
+        {
+            return  Task.Run(() => {
+                Load();
+            });
+        }
     }
 }

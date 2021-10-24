@@ -21,7 +21,8 @@ namespace Farallon.UI
         public abstract string TabName { get; }
 
         public abstract void Load();
-        
+
+        public abstract Task LoadAsync();
     }
 
 

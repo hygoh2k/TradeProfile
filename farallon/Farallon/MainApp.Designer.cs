@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusBar = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TabContainer = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -43,7 +43,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.StatusBar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 484);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -53,10 +53,10 @@
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Ready";
-            this.toolStripStatusLabel1.ToolTipText = "Ready";
+            this.StatusBar.Name = "toolStripStatusLabel1";
+            this.StatusBar.Size = new System.Drawing.Size(39, 17);
+            this.StatusBar.Text = "Ready";
+            this.StatusBar.ToolTipText = "Ready";
             // 
             // TabContainer
             // 
@@ -89,8 +89,8 @@
             // 
             this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
             this.reloadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.reloadToolStripMenuItem.Text = "Reload";
-            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
+            this.reloadToolStripMenuItem.Text = "Load/Reload";
+            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.Reload_Click);
             // 
             // Form1
             // 
@@ -114,7 +114,7 @@
 
         #endregion
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel StatusBar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TabControl TabContainer;
         private System.Windows.Forms.MenuStrip menuStrip1;

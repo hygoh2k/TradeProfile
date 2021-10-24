@@ -54,5 +54,12 @@ namespace ReportTabControl
             this.Controls.Add(lc);
             lc.Dock = DockStyle.Fill;
         }
+
+        public override Task LoadAsync()
+        {
+            return Task.Run(() => {
+                Load();
+            });
+        }
     }
 }

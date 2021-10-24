@@ -6,6 +6,7 @@ using ReportTabControl;
 using System;
 using System.Windows.Forms;
 using ReportTabPage;
+using System.Threading.Tasks;
 
 namespace farallon
 {
@@ -23,36 +24,72 @@ namespace farallon
 
         private async void Load_Click(object sender, EventArgs e)
         {
-            this.toolStripStatusLabel1.Text = "Loading...";
+            //this.toolStripStatusLabel1.Text = "Loading...";
             //await Task.Delay(10000);
             //this.TabContainer.Controls.Add(new ProfitLossTabPage());
         }
 
-        private string WorkingDir = string.Empty;
+        //private string WorkingDir = string.Empty;
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                WorkingDir = folderBrowserDialog1.SelectedPath;
-            }
+            //DialogResult result = folderBrowserDialog1.ShowDialog();
+            //if (result == DialogResult.OK)
+            //{
+            //    WorkingDir = folderBrowserDialog1.SelectedPath;
+            //}
         }
 
         private static Castle.Windsor.WindsorContainer _container;
-        private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void Reload_Click(object sender, EventArgs e)
         {
-            SetupContainer();
-            RegisterComponents();
-
-            var pageCollection = _container.Resolve<ReportPageCollection>();
-
-            this.TabContainer.TabPages.Clear();
-            foreach (var report in pageCollection.Items)
+            try
             {
-                report.Value.Load();
-                this.TabContainer.TabPages.Add(report.Value);
-            }
+                this.StatusBar.Text = "Loading...";
+                SetupContainer();
+                RegisterComponents();
 
+                this.StatusBar.Text = "Loading Plugin...";
+                var pageCollection = await RunResolveAsync();
+
+                // _container.Resolve<ReportPageCollection>();
+
+                this.StatusBar.Text = "Loading Reports...";
+                this.TabContainer.TabPages.Clear();
+                await Task.Run(() =>
+                {
+                    foreach (var report in pageCollection.Items)
+                    {
+                        report.Value.Load();
+
+                    }
+                });
+
+                foreach (var report in pageCollection.Items)
+                {
+                    this.TabContainer.TabPages.Add(report.Value);
+                }
+
+                this.StatusBar.Text = "Ready";
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(
+                    string.Format("Error encountered during loading, try reload. Error: {0}", ex.Message),
+                    caption:"Error during loading",
+                    buttons:MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Exclamation
+                    );
+            }
+        }
+
+
+        private async Task<ReportPageCollection> RunResolveAsync()
+        {
+            return await Task.Run( () => { 
+                var reportPageCollection = _container.Resolve<ReportPageCollection>();
+                return reportPageCollection;
+            } );
         }
 
 
