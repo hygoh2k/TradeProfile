@@ -23,7 +23,8 @@ ProfitLossPage: Display the P/L data
 Unit test project focussing on individual components
 
 
-Steps to run:
+##  Steps to run:
+
 1) Select File->Reload
 ![image](https://user-images.githubusercontent.com/977426/138586841-b7781117-dc4e-4622-8f91-a718e29e98f9.png)
 
