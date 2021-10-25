@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// a console apps as a playground for API/service test run
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

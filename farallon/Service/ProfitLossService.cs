@@ -24,11 +24,20 @@ namespace Farallon.Service
 
         
     }
+
+
+    /// <summary>
+    /// A service to calculate Profit and Loss. 
+    /// The service depends on ITickerService, ITransactionLoaderService, which can be injected via IoC
+    /// </summary>
     public class ProfitLossService : IService
     {
         private ITickerService _tickerService;
         private ITransactionLoaderService _transactionService;
 
+        /// <summary>
+        /// returns the result. the service has to be run beforehand
+        /// </summary>
         public ProfitLossReportItem[] ReportItems
         {
             get
@@ -45,8 +54,11 @@ namespace Farallon.Service
             _reportItemList = new List<ProfitLossReportItem>();
         }
 
-        
 
+        /// <summary>
+        /// run the service to generate ReportItems
+        /// </summary>
+        /// <returns></returns>
         public bool Run()
         {
             var tickerList = _tickerService.LoadTicker();
@@ -101,17 +113,6 @@ namespace Farallon.Service
 
 
             }
-
-            
-
-
-
-
-            
-
-            
-
-
             return true;
         }
     }

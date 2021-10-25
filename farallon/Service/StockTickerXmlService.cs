@@ -5,15 +5,15 @@ using System.Xml;
 
 namespace Farallon.Service
 {
-    public class StockTickerXmlService : IService, ITickerService
+    public class StockTickerXmlService : ITickerService//IService, ITickerService
     {
         string xmlFile = AppDomain.CurrentDomain.BaseDirectory + "../../../working_dir/ticker.xml";
         
-        public bool Run()
-        {
-            LoadTicker();
-            return true;
-        }
+        //public bool Run()
+        //{
+        //    LoadTicker();
+        //    return true;
+        //}
         public StockTicker[] LoadTicker()
         {
             var transList = new List<StockTicker>();

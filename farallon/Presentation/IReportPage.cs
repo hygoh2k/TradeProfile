@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace Farallon.UI
 {
+    /// <summary>
+    /// an interface of the Report.
+    /// All types ReportPage classes should implement this interface.
+    /// </summary>
     public interface IReportPage
     {
         string TabName { get; }
@@ -16,6 +20,10 @@ namespace Farallon.UI
 
     }
 
+    /// <summary>
+    /// a base class of ReportPage
+    /// all pages to be injected into the Application should be derived from this base class.
+    /// </summary>
     public abstract class ReportPage : TabPage, IReportPage
     {
         public abstract string TabName { get; }
@@ -26,6 +34,9 @@ namespace Farallon.UI
     }
 
 
+    /// <summary>
+    /// a collection class of ReportPage
+    /// </summary>
     public class ReportPageCollection
     {
         public IReadOnlyDictionary<string, ReportPage> Items { get; private set; }

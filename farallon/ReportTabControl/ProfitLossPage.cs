@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ReportTabControl
 {
+    /// <summary>
+    /// a page to display profit/loss
+    /// </summary>
     public class ProfitLossTabPage : ReportPage
     {
         ProfitLossService _service = null;

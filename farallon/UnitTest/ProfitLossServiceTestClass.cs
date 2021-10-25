@@ -6,10 +6,14 @@ using Farallon.Datamodel;
 
 namespace Farallon.Service.Tests
 {
+    /// <summary>
+    /// ProfitLossServiceTest test class
+    /// </summary>
     [TestClass()]
     public class ProfitLossServiceTestClass
     {
         [TestMethod("ProfitLossServiceOneTickerTwoTransactionTest")]
+        [Description("ProfitLossService test with 1 Ticker and 2 Transactions ")]
         public void ProfitLossServiceOneTickerTwoTransactionTest()
         {
             Mock<ITickerService> tickerService = new Mock<ITickerService>();

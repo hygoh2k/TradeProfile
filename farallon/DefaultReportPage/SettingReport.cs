@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace ReportTabPage
 {
+    /// <summary>
+    /// a page to display application settings
+    /// </summary>
     public class AppSettingPage : ReportPage
     {
         public AppSettingPage()

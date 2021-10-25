@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Farallon.Datamodel
 {
+
+    /// <summary>
+    /// interface of trasaction model
+    /// </summary>
     public interface ITransaction
     {
         /// <summary>
@@ -44,6 +48,9 @@ namespace Farallon.Datamodel
     }
 
 
+    /// <summary>
+    /// interface of a ticker model
+    /// </summary>
     public interface ITicker
     {
         /// <summary>

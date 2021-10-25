@@ -5,7 +5,10 @@ using System.Xml;
 
 namespace Farallon.Service
 {
-    public class StockTransactionXmlService : IService, ITransactionLoaderService
+    /// <summary>
+    /// the Stock Transaction service that loads data from XML
+    /// </summary>
+    public class StockTransactionXmlService : ITransactionLoaderService //IService, ITransactionLoaderService
     {
         string xmlFile = AppDomain.CurrentDomain.BaseDirectory + "../../../working_dir/transaction.xml"; //hardcode for now
 
@@ -46,11 +49,11 @@ namespace Farallon.Service
 
         }
 
-        public bool Run()
-        {
-            LoadTransaction();
-            return true;
-        }
+        //public bool Run()
+        //{
+        //    LoadTransaction();
+        //    return true;
+        //}
     }
 
 

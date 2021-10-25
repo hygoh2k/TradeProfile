@@ -10,17 +10,20 @@ using System.Threading.Tasks;
 
 namespace farallon
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// the main application
+    /// </summary>
+    public partial class MainApp : Form
     {
-        public Form1()
+        public MainApp()
         {
             InitializeComponent();
         }
 
-        private void InitEnvironment()
-        {
+        //private void InitEnvironment()
+        //{
             
-        }
+        //}
 
         private async void Load_Click(object sender, EventArgs e)
         {
@@ -39,6 +42,9 @@ namespace farallon
             //}
         }
 
+        /// <summary>
+        /// IoC container
+        /// </summary>
         private static Castle.Windsor.WindsorContainer _container;
         private async void Reload_Click(object sender, EventArgs e)
         {
@@ -49,7 +55,7 @@ namespace farallon
                 RegisterComponents();
 
                 this.StatusBar.Text = "Loading Plugin...";
-                var pageCollection = await RunResolveAsync();
+                var pageCollection = await ResolveReportPage();
 
                 // _container.Resolve<ReportPageCollection>();
 
@@ -83,8 +89,11 @@ namespace farallon
             }
         }
 
-
-        private async Task<ReportPageCollection> RunResolveAsync()
+        /// <summary>
+        /// resolve all the registered report pages
+        /// </summary>
+        /// <returns></returns>
+        private async Task<ReportPageCollection> ResolveReportPage()
         {
             return await Task.Run( () => { 
                 var reportPageCollection = _container.Resolve<ReportPageCollection>();
@@ -104,9 +113,12 @@ namespace farallon
             _container.Kernel.Resolver.AddSubResolver(new CollectionResolver(_container.Kernel));
         }
 
+        /// <summary>
+        /// register all the required components
+        /// </summary>
         static void RegisterComponents()
         {
-
+            //register ITransactionLoaderService
             _container.Register(
                 Castle.MicroKernel.Registration.Component
                 .For<ITransactionLoaderService>()
@@ -119,25 +131,29 @@ namespace farallon
             //    .ImplementedBy<StockTickerXmlService>()
             //);
 
+            //register ITickerService
             _container.Register(
             Castle.MicroKernel.Registration.Component
             .For<ITickerService>()
             .ImplementedBy<StockTickerAvapiService>()
         );
 
+            //register AppSettingPage to ReportPageCollection
             _container.Register(
                 Castle.MicroKernel.Registration.Component
                 .For<ReportPage>()
                 .ImplementedBy<AppSettingPage>()
             );
 
+
+            //register ProfitLossTabPage to ReportPageCollection
             _container.Register(
                 Castle.MicroKernel.Registration.Component
                 .For<ReportPage>()
                 .ImplementedBy<ProfitLossTabPage>()
             );
 
-            //register the ReportPageCollection that hold the Commands Instances
+            //register the ReportPageCollection that hold all ReportPage objects
             //Command Instances will be injected into ReportPageCollection by IoC Container
             _container.Register(Castle.MicroKernel.Registration.Component.For<ReportPageCollection>());
 

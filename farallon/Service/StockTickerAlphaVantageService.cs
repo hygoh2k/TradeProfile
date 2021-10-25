@@ -9,20 +9,24 @@ using Avapi.AvapiTIME_SERIES_INTRADAY;
 
 namespace Farallon.Service
 {
-    public class StockTickerAvapiService : IService, ITickerService
+    /// <summary>
+    /// a ticker service based on Avapi. the service requires ITransactionLoaderService to be injected
+    /// </summary>
+    public class StockTickerAvapiService : ITickerService //IService, ITickerService
     {
         string _key = @"WIN7PU26SG9B072T";
         //string _apiUrl = @"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={0}&interval=5min&apikey=WIN7PU26SG9B072T";
 
 
-        public ITransactionLoaderService TransactionService { get; set; }
-        
 
-        public bool Run()
-        {
-            LoadTicker();
-            return true;
-        }
+        public ITransactionLoaderService TransactionService { get; set; }
+
+
+        //public bool Run()
+        //{
+        //    LoadTicker();
+        //    return true;
+        //}
         public StockTicker[] LoadTicker()
         {
             StockTransaction[] transList =
