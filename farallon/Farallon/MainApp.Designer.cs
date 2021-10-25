@@ -1,6 +1,6 @@
 ﻿namespace farallon
 {
-    partial class Form1
+    partial class MainApp
     {
         /// <summary>
         /// Required designer variable.
